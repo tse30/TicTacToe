@@ -63,7 +63,8 @@ fun GameScreen() {
                     shape = RoundedCornerShape(20.dp)
                 )
                 .clip(RoundedCornerShape(20.dp))
-                .background(GrayBackground)
+                .background(GrayBackground),
+            contentAlignment = Alignment.Center
         ) {
             BoardBase()
         }
