@@ -3,6 +3,7 @@ package com.example.tictactoe
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.tictactoe.ui.theme.TicTacToeTheme
@@ -12,7 +13,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             TicTacToeTheme {
-                GameScreen()
+                GameScreen(viewModel())
             }
         }
     }
@@ -22,6 +23,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Preview() {
     TicTacToeTheme {
-        GameScreen()
+        GameScreen(viewModel())
     }
 }
