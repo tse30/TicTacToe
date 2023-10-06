@@ -37,25 +37,26 @@ class GameViewModel : ViewModel() {
         boardItems.forEach { (i, _) ->
             boardItems[i] = BoardCellValue.NONE
         }
-        if (startPlayer == BoardCellValue.CIRCLE){
+        if (startPlayer == BoardCellValue.CIRCLE) {
             startPlayer = BoardCellValue.CROSS
-        }else{
+        } else {
             startPlayer = BoardCellValue.CIRCLE
         }
 
-        if (startPlayer == BoardCellValue.CROSS){
+        if (startPlayer == BoardCellValue.CROSS) {
             state = state.copy(
                 hintText = "Player '0' turn",
                 currentTurn = startPlayer,
                 victoryType = VictoryType.NONE,
                 hasWon = false
             )
-        }else{
+        } else {
             state = state.copy(
                 hintText = "Player 'X' turn",
                 currentTurn = startPlayer,
                 victoryType = VictoryType.NONE,
-                hasWon = false)
+                hasWon = false
+            )
         }
 
     }
@@ -153,7 +154,7 @@ class GameViewModel : ViewModel() {
         }
     }
 
-    private fun hasBoardFull(): Boolean {
+    fun hasBoardFull(): Boolean {
         return !boardItems.containsValue(BoardCellValue.NONE)
     }
 }
