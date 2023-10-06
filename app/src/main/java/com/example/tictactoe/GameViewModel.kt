@@ -32,16 +32,32 @@ class GameViewModel : ViewModel() {
         }
     }
 
+    private var startPlayer = state.startPlayer
     private fun gameReset() {
         boardItems.forEach { (i, _) ->
             boardItems[i] = BoardCellValue.NONE
         }
-        state = state.copy(
-            hintText = "Player '0' turn",
-            currentTurn = BoardCellValue.CIRCLE,
-            victoryType = VictoryType.NONE,
-            hasWon = false
-        )
+        if (startPlayer == BoardCellValue.CIRCLE){
+            startPlayer = BoardCellValue.CROSS
+        }else{
+            startPlayer = BoardCellValue.CIRCLE
+        }
+
+        if (startPlayer == BoardCellValue.CROSS){
+            state = state.copy(
+                hintText = "Player '0' turn",
+                currentTurn = startPlayer,
+                victoryType = VictoryType.NONE,
+                hasWon = false
+            )
+        }else{
+            state = state.copy(
+                hintText = "Player 'X' turn",
+                currentTurn = startPlayer,
+                victoryType = VictoryType.NONE,
+                hasWon = false)
+        }
+
     }
 
     private fun addValueToBoard(cellNo: Int) {
